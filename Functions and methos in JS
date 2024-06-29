@@ -1,0 +1,70 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="Functions &methods.js"></script>
+</html>
+
+
+// function choosevowel(vouwel){
+//     let count=0;
+// for(let char of vouwel){
+//     if(
+//         char=="a" || char=="e"|| char==="i" ||char=="o" ||char=="u"){
+//      count++;
+//     }
+//     console.log(count);
+// }
+
+//forEach loop in ARRAY
+
+// let arr=[1,2,3,4,5];
+
+// arr.forEach(function mydata(value)){
+
+//      console.log(value);
+// });
+
+let str=["Dibrugarh","delhi","mumbai","bangalore"];
+
+str.forEach((val,idx,str)=>{
+    console.log(val.toUpperCase(),idx,str);
+
+});
+
+
+///foreach is consider as higher order function . work as parameter and also gives return values.as output
+
+
+//more aRRAYS
+
+//mapmethod
+
+
+let digit=[2,3,4,5,6];
+
+let newarr= digit.map((val)=>{
+    console.log(val*val);
+    return val*val;
+});
+
+
+//filter method
+
+let nums=[1,2,3,4];
+
+let evenarr=nums.filter((value)=>
+{
+    console.log(nums);
+    return value%2===0;
+});
+
+console.log(evenarr);
+
+
+//reduce method
