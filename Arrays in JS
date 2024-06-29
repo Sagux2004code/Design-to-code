@@ -1,0 +1,88 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="arrays.js"></script>
+</html>
+
+
+// Arrays is collection of items
+
+//create arrays
+
+let Marks=[87,78,69,50,49];
+
+console.log("marks:",Marks);
+
+let names=["sagarika","karan","jyoti","tauhid"];
+
+console.log("names:",names);
+
+//arrays idices
+
+//arr[0],arr[4],arr[3];
+
+//arrays are mutable but strings are immutable 
+
+//looping over an array
+
+let mentors =["Ansh mehra","Nikhil pawar","Aman dhattarwal","Anik jain","Isaan sharma"];
+
+// for(let idx=0 ; idx< mentors.lenght; idx++){
+//     console.log(mentors[idx]);
+// }
+
+//for of
+
+for (let mentor of mentors){
+
+    console.log(mentor);
+}
+
+//Arrays methods
+
+//1. push(),  pop(), tostring()
+
+let fruits =["apple","mango","graps","orange"];
+fruits.push("Lays","nuts","juices");
+console.log(fruits);
+
+let fruitsitem =["apple","mango","graps","orange"];
+console.log(fruitsitem);
+let deleted =fruitsitem.pop();
+console.log(fruitsitem);
+console.log(deleted);
+console.log(fruitsitem.toString());
+
+//Array methods 2
+
+//concat(), unshift(), shift(),
+
+let marvel=["thor","captain","spiderman","bat man"];
+let southher=["alluarjun","dalqueer","maheshbabu"];
+
+let newcombine =marvel.concat(southher);
+console.log(newcombine);
+
+
+// let marvel2=["thor","captain","spiderman","bat man"];
+// let newhero =marvel2.unshift("myhero");
+
+// let marvel2=["thor","captain","spiderman","bat man"];
+// let newhero =marvel2.shift("myhero");
+
+let marvel2=["thor","captain","spiderman","bat man"];
+console.log("marvel",marvel2);
+console.log(marvel2.slice(1,1));
+
+
+let num=[1,2,3,4,5,6];
+num.splice(1,3,9,2,1);
+console.log("item added 9,2,1",num);
+
+
