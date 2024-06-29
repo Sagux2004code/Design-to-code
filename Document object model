@@ -1,0 +1,64 @@
+// when a web page is loaded the browser creates a DOCUMENT OBJECT MODEL (DOM) of the page.
+
+console.log(window.document);
+
+
+//dom manupulation
+let heading=document.getElementById("heading");
+console.log(heading);
+
+let light=document.getElementsByClassName("light");
+console.log(light);
+let node=document.querySelector("p");
+
+//Properties
+//Tagname , Innertext , Inner HTML , Text content 
+
+let h2=document.querySelector("h2");
+console.dir(h2);
+
+h2.innerText= h2.innerText+"From apna college";
+
+let div=document.querySelectorall(".box");
+console.dir(div[0]);
+
+div[1].innerText="container";
+div[2].innerText="container";
+
+
+//DoM attributes
+// getattribute()
+//let div=document.querySelector("div");
+// console.log(div);
+
+// let id = div.getAttribute("id");
+// console.log(id);
+
+//setAttribute(attri , value)
+
+//style
+//div.style.backgroundColor="purple";
+
+let newbtn = document.createElement("newbtn");
+newbtn.innerText ="Press here";
+console.log("newbtn");
+
+//div.appened(el)
+//div.before(el)
+//div.after(el)
+
+// to delete
+
+div.remove(el);
+
+//create button
+
+let butt=document.createElement("butt");
+butt.innerText="Click Me";
+butt.style.backgroundColor="Red";
+butt.style.textColor="white";
+document.querySelector("butt").prepend("butt");
+console.log(butt);
+
+
+
