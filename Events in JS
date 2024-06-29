@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Here is a UI of a Button press it</h1>
+    <button id="btn1" onclick="console.log('button clicked')">Press me</button>
+    <button id="btn2" ondblclick="console.log('button 2 clicked')">Press me 2 times</button>
+    <div onmouseover="console.log('you are inside box')">Here is a box</div>
+    <button id="mode">Change mode</button>
+</body>
+<script src="Events.js"></script>
+</html>
+
+
+
+
+
+#btn1{
+    height: 100px;
+    width: 120px;
+    border-radius: 22px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(18, 18, 18);
+    text-align: center;
+    text-shadow:0cqmax;
+
+};
+div{
+    height: 200px;
+    width: 200px;
+    border-radius: 22px;
+    color: rgb(255, 255, 255);
+    border: 1px,solid,grey;
+    text-align: center;
+    text-shadow:0cqmax;
+};
+
+
+
+
+
+
+// mouse events (clicks,double click etc)
+//keyborad events (keypress,keyup,keydown)
+//for events(submit etc)
+//print event & many more 
+
+let btn1 =document.querySelector("btn");
+
+btn1.onclick =(e)=>{
+    console.log(e);
+    
+}
+
+//event listeners
+
+btn1.addEventListener("click",(evt) =>{
+    console.log("Button 1 clicked");
+    console.log(evt);
+    console.log(evt,type);
+
+});
+btn1.removeEventListener("click",(evt) =>{
+    console.log("Button 1 clicked");
+    console.log(evt);
+    console.log(evt,type);
+
+});
+//practice
+let modeBtn= document.querySelector("#mode");
+let currmode = "light";
+modeBtn.addEventListener("click",() =>{
+    console.log("Trying to change mode");
+    if(currmode==="light"){
+       currmode="dark";
+    }
+    else{
+        currmode="light";
+    }
+    console.log(currmode);
+
+
+});
+
+
+
