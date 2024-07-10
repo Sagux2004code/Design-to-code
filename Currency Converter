@@ -1,0 +1,228 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency coverter</title>
+    <link rel="stylesheet" href="currency conv.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="container">
+        <h2>Currency Converter</h2>
+        <form action="">
+            <div class="amount">
+                <p>Enter amount</p>
+                <input value="100" type="text">
+            </div>
+            <div class="dropdown">
+                <div class="from">
+                    <p>From</p>
+                    <div class="select-container">
+                        <img src="https://flagsapi.com/US/shiny/64.png" alt="flag">
+                        <select name="from" id="currency">
+                            <option value="USD">USD</option>
+                            <option value="INR">INR</option>
+                            <option value="EURO">EUR</option>
+                            <option value="AUD">AUD</option>
+                        </select>
+                    </div>
+                </div>
+                <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                <div class="to">
+                    <p>To</p>
+                    <div class="select-container">
+                        <img src="https://flagsapi.com/IN/shiny/64.png" alt="flag">
+                        <select name="to" id="currency">
+                            <option value="USD">USD</option>
+                            <option value="INR" selected>INR</option>
+                            <option value="EURO">EUR</option>
+                            <option value="AUD">AUD</option>
+                        </select>
+                    </div>
+                    </div>
+
+                </div>
+                <div class="msg">1 USD = 80 INR</div>
+                    <button>Get Exchange Rate</button>
+            </div>
+            
+        </form>
+
+    </div>
+    
+    <script src="currency conv.js"></script>
+    <script src="code.js"></script>
+</body>
+</html>
+
+
+
+
+//CSS
+
+
+*{
+    margin: 0;
+    padding: 0;
+
+    
+}
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(145, 145, 230);
+
+    
+}
+.container{
+    background-color: rgb(254, 248, 248);
+    padding: 4rem;
+    border-radius: 2rem;
+    min-height: 44vh;
+    width: 40vh;
+    
+    
+}
+from{
+    margin: 2rem 0 1rem 0;
+
+}
+
+from select ,
+ button,
+ input ,p
+{
+    width: 100%;
+    border: none;
+    outline: none;
+    border-radius: 0.75rem;
+    padding: 6px;
+
+}
+input{
+    border: 1px solid rgb(50, 50, 50);
+    font-size: 2rem;
+    height: 3rem;
+    padding-left:0.5rem ;
+
+
+}
+.dropdown{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+
+}
+
+.dropdown i{
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+ .select-container img{
+
+    max-height: 2rem;
+
+
+}
+
+.select-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    width: 6rem;
+    background-color: rgb(220, 187, 250);
+    border-color: rgb(211, 164, 255);
+}
+
+.select-container select{
+    font-size: 1rem;
+    width: auto;
+}
+
+.msg{
+    margin: 2rem 0 2rem 0;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    
+
+}
+
+button{
+    height: 3rem;
+    background-color: rgb(193, 133, 247);
+    color: white;
+    font-size: 1.15rem;
+    cursor: pointer;
+
+}
+
+
+
+//JS
+
+
+const Main_Url ="https://cdn.jsdelivr.net/gh/fawazahmed0/currency-api@1/latest/currencies/eur/jpy.json"
+
+const dropdowns = document.querySelectorAll(".dropdown select" );
+
+const btn = document.querySelector(".from button");
+const fromCurr = document.querySelector(".from select");
+const toCurr = document.querySelector(".to select");
+
+for (let select in countryList){
+    for (currCode in countryList) {
+        let newOption = document.createElement("option");
+
+        newOption.innerText = currCode;
+        newOption.value = currCode;
+        if(select.name === "from" && currCode === "USD"){
+            newOption.select = "selected";
+
+        }
+        else if(select.name === "to" && currCode === "IND"){
+            newOption.select = "selected";}
+
+        select.append(newOption);
+    }
+
+    select.addEventListener("change " ,(evt) =>{
+        updateFlag(evt.target);
+    });
+}
+
+const updateFlag = (element)=>
+{
+    let currCode = element.value;
+    let countryCode = countryList[currCode];
+    let newScr= "https://flagsapi.com/IN/shiny/64.png";
+    let img = element.parentElement.querySelector("img");
+    img.src = newScr;
+};
+
+btn.addEventListener("click",(evt)=>{
+
+    evt.preventDefault();
+    let amount = document.querySelector(".amount input");
+    let amtVal = amount.value;
+    if(amtVal === ""  || amtVal <1){
+        amtVal = 1;
+        amount.value ="1";
+    }
+
+
+    const URL = `${Main_Url}/${fromCurr.value.toLowercase()}/${toCurr.value.toLowercase()}.json`;
+    let response = awaitfetch (URL);
+    let data = awaitresponse.json();
+    console.log(response);
+    let rate = data[toCurr.value.toLowercase()];
+
+
+    let finalAmount = amount * rate;
+});
+
+
